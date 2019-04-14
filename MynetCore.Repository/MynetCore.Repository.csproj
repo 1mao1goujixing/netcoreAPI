@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="sqlSugarCore" Version="4.9.9.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MynetCore.IRepository\MynetCore.IRepository.csproj" />
+    <ProjectReference Include="..\MynetCore.Model\MynetCore.Model.csproj" />
+    <ProjectReference Include="..\MynetCore.Tool\MynetCore.Tool.csproj" />
+  </ItemGroup>
+
+</Project>
