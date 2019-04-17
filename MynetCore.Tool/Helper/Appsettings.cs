@@ -5,7 +5,8 @@ using System;
 namespace MynetCore.Tool.Helper
 {
     /// <summary>
-    /// appsettings.json操作类 /// </summary>
+    /// appsettings.json操作类
+    /// </summary>
     public class Appsettings
     {
         static IConfiguration Configuration { get; set; }
@@ -17,14 +18,16 @@ namespace MynetCore.Tool.Helper
             .Build();
         }
         /// <summary>
-        /// 封装要操作的字符 /// </summary>
+        /// 封装要操作的字符
+        /// </summary>
         /// <param name="sections"></param>
         /// <returns></returns>
         public static string app(params string[] sections)
         {
             try
             {
-                var val = string.Empty; for (int i = 0; i < sections.Length; i++)
+                var val = string.Empty;
+                for (int i = 0; i < sections.Length; i++)
                 {
                     val += sections[i] + ":";
                 }

@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace MynetCoreAPI.AOP
 {
     public class CacheAOP:IInterceptor
-    {//通过注入的方式，把缓存操作接口通过构造函数注入
+    {
+        //通过注入的方式，把缓存操作接口通过构造函数注入
         private ICaching _cache;
         public CacheAOP(ICaching cache)
         {

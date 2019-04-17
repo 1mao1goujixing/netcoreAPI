@@ -44,7 +44,7 @@ namespace MynetCore.Services
         [Caching(AbsoluteExpiration = 10)]
         public async Task<List<UserInfo>> GetUserInfoList()
         {  
-            //可以写在userInfoIRepository类里面但是有点麻烦 好处是比较规范
+              //可以写在userInfoIRepository类里面但是有点麻烦 好处是比较规范
               // return await this.userInfoIRepository.GetUserInfoList();
               //直接调用base 的BaseServices 获取值里面实现了BaseRepository 的注入
             return await base.Query(o => o.userid == 1);

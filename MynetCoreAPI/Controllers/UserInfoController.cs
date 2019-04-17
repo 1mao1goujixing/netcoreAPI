@@ -31,8 +31,11 @@ namespace MynetCoreAPI.Controllers
         [HttpGet]
         public async Task<List<UserInfo>> Get()
         {
+            //得到Readis配置连接
             var connect = Appsettings.app(new string[] { "AppSettings", "RedisCaching", "ConnectionString" });
+            //查询数据
             var userinfoList = await UserInfoServices.GetUserInfoList();
+
             if (RedisCacheManager.Get<object>("redis") != null)
             {
                 RedisCacheManager.Get<List<UserInfo>>("redis");

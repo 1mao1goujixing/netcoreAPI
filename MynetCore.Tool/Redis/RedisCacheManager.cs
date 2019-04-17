@@ -21,7 +21,9 @@ namespace MynetCore.Tool.Redis
             this.redisConnection = GetRedisConnection();
         }
         /// <summary>
-        /// 核心代码，获取连接实例 /// 通过双if 夹lock的方式，实现单例模式 /// </summary>
+        /// 核心代码，获取连接实例
+        /// 通过双if 夹lock的方式，实现单例模式
+        /// </summary>
         /// <returns></returns>
         private ConnectionMultiplexer GetRedisConnection()
         {
@@ -42,7 +44,8 @@ namespace MynetCore.Tool.Redis
             return this.redisConnection;
         }
         /// <summary>
-        /// 清除 /// </summary>
+        /// 清除
+        /// </summary>
         public void Clear()
         {
             foreach (var endPoint in this.GetRedisConnection().GetEndPoints())
@@ -55,7 +58,8 @@ namespace MynetCore.Tool.Redis
             }
         }
         /// <summary>
-        /// 判断是否存在 /// </summary>
+        /// 判断是否存在
+        /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
         public bool Get(string key)
@@ -63,7 +67,8 @@ namespace MynetCore.Tool.Redis
             return redisConnection.GetDatabase().KeyExists(key);
         }
         /// <summary>
-        /// 获取 /// </summary>
+        /// 获取
+        /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -71,7 +76,8 @@ namespace MynetCore.Tool.Redis
         {
             var value = redisConnection.GetDatabase().StringGet(key);
             if (value.HasValue)
-            { //需要用的反序列化，将Redis存储的Byte[]，进行反序列化
+            { 
+                //需要用的反序列化，将Redis存储的Byte[]，进行反序列化
                 return SerializeHelper.Deserialize<TEntity>(value);
             }
             else
@@ -80,21 +86,24 @@ namespace MynetCore.Tool.Redis
             }
         }
         /// <summary>
-        /// 移除 /// </summary>
+        /// 移除
+        /// </summary>
         /// <param name="key"></param>
         public void Remove(string key)
         {
             redisConnection.GetDatabase().KeyDelete(key);
         }
         /// <summary>
-        /// 设置 /// </summary>
+        /// 设置
+        /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <param name="cacheTime"></param>
         public void Set(string key, object value, TimeSpan cacheTime)
         {
             if (value != null)
-            { //序列化，将object值生成RedisValue
+            { 
+                //序列化，将object值生成RedisValue
                 redisConnection.GetDatabase().StringSet(key, SerializeHelper.Serialize(value), cacheTime);
             }
         }
